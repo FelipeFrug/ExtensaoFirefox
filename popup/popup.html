@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <title>Privacy Guardian</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <header>
+    <div class="title">
+      <h1>Privacy Guardian</h1>
+      <small id="page-host">—</small>
+    </div>
+    <button id="rescan" title="Reanalisar a página atual">↻</button>
+  </header>
+
+  <section id="score-card">
+    <div class="score-ring">
+      <svg viewBox="0 0 100 100" width="96" height="96" aria-hidden="true">
+        <circle cx="50" cy="50" r="44" fill="none" stroke="#e5e7eb" stroke-width="10"/>
+        <circle id="score-arc" cx="50" cy="50" r="44" fill="none"
+                stroke="#1a7f37" stroke-width="10" stroke-linecap="round"
+                stroke-dasharray="276.46" stroke-dashoffset="276.46"
+                transform="rotate(-90 50 50)"/>
+      </svg>
+      <div class="score-value">
+        <strong id="score-num">—</strong>
+        <span id="score-rating">aguardando…</span>
+      </div>
+    </div>
+    <ul id="penalty-list"></ul>
+  </section>
+
+  <nav class="tabs" role="tablist">
+    <button data-tab="thirdparty" class="active" role="tab">Terceiros</button>
+    <button data-tab="cookies" role="tab">Cookies</button>
+    <button data-tab="storage" role="tab">Storage</button>
+    <button data-tab="fingerprint" role="tab">Fingerprint</button>
+    <button data-tab="hijack" role="tab">Ameaças</button>
+  </nav>
+
+  <main>
+    <section id="tab-thirdparty" class="tab-pane active">
+      <div class="summary">
+        <div><strong id="tp-count">0</strong><span>domínios</span></div>
+        <div><strong id="tp-requests">0</strong><span>requisições</span></div>
+        <div><strong id="tp-trackers">0</strong><span>trackers</span></div>
+      </div>
+      <div class="list" id="thirdparty-list"></div>
+    </section>
+
+    <section id="tab-cookies" class="tab-pane">
+      <div class="summary">
+        <div><strong id="ck-total">0</strong><span>total</span></div>
+        <div><strong id="ck-third">0</strong><span>3ª parte</span></div>
+        <div><strong id="ck-persistent">0</strong><span>persistentes</span></div>
+        <div><strong id="ck-session">0</strong><span>sessão</span></div>
+      </div>
+      <h3>Supercookies</h3>
+      <div class="list small" id="supercookies-list">
+        <p class="empty">Nenhum sinal detectado.</p>
+      </div>
+      <h3>Cookies</h3>
+      <div class="list small" id="cookies-list"></div>
+    </section>
+
+    <section id="tab-storage" class="tab-pane">
+      <div class="summary">
+        <div><strong id="st-origins">0</strong><span>origens</span></div>
+        <div><strong id="st-ls-keys">0</strong><span>localStorage</span></div>
+        <div><strong id="st-ss-keys">0</strong><span>sessionStorage</span></div>
+        <div><strong id="st-idb">0</strong><span>IndexedDB</span></div>
+      </div>
+      <div class="list" id="storage-list"></div>
+    </section>
+
+    <section id="tab-fingerprint" class="tab-pane">
+      <div class="summary">
+        <div><strong id="fp-total">0</strong><span>chamadas</span></div>
+        <div><strong id="fp-apis">0</strong><span>APIs</span></div>
+      </div>
+      <div class="list small" id="fingerprint-list">
+        <p class="empty">Nenhuma chamada de fingerprinting detectada.</p>
+      </div>
+    </section>
+
+    <section id="tab-hijack" class="tab-pane">
+      <h3>Hijacking / Hooking</h3>
+      <div class="list small" id="hijack-list">
+        <p class="empty">Nenhum sinal detectado.</p>
+      </div>
+      <h3>Cookie Syncing</h3>
+      <div class="list small" id="sync-list">
+        <p class="empty">Nenhum sincronismo de cookies detectado.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <a href="#" id="open-methodology">Como o score é calculado?</a>
+  </footer>
+
+  <script src="popup.js"></script>
+</body>
+</html>

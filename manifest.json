@@ -1,0 +1,52 @@
+{
+  "manifest_version": 2,
+  "name": "Privacy Guardian",
+  "version": "1.0.0",
+  "description": "Detecta ameaças à privacidade e rastreamento durante a navegação web (Insper - TecHack 2026.1)",
+  "author": "Felipe Frug",
+
+  "permissions": [
+    "<all_urls>",
+    "webRequest",
+    "cookies",
+    "tabs",
+    "activeTab"
+  ],
+
+  "background": {
+    "scripts": ["lib/utils.js", "background/background.js"],
+    "persistent": true
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["lib/utils.js", "content/content.js"],
+      "run_at": "document_start",
+      "all_frames": true
+    }
+  ],
+
+  "web_accessible_resources": ["content/inject.js"],
+
+  "browser_action": {
+    "default_popup": "popup/popup.html",
+    "default_title": "Privacy Guardian",
+    "default_icon": {
+      "19": "icons/icon.svg",
+      "38": "icons/icon.svg"
+    }
+  },
+
+  "icons": {
+    "48": "icons/icon.svg",
+    "96": "icons/icon.svg"
+  },
+
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "privacy-guardian@insper.edu.br",
+      "strict_min_version": "109.0"
+    }
+  }
+}
